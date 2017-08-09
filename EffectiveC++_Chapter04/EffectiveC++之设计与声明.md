@@ -103,3 +103,17 @@ reference 往往以指针实现出来的，因此，pass by reference 通常意�
 
 ### 宁以non-member, non-friend替换member函数
 
+我们在示例代码中定义了一个WebBrowser类，这个类有清除缓存、清除历史记录和cookies的功能
+
+我们需要提供一个可以执行上面所有的动作的接口，现在有两种方法: 
+
+1. 使用member函数来处理这些函数
+2. 使用non-member函数来处理这些函数
+
+根据面对对象守则要求，数据以及操作数据的那些函数应该被捆绑在一块儿，这意味着member函数是比较好的函数，不幸的是这个建议不正确，这是基于面对对象的一个误解。面对对象守则要求数据应该尽可能被封装，然而与直观相反的，member函数excuteAllFunction带来的封装性比non-member函数clearWebBrowserAll低。此外，提供non-member函数可允许对WebBrowser相关机能有效大的包裹弹性(packaging flexibility),而那最终导致较低的编译相依性，增加WebBrowser的可伸展性:
+
+### 若所有的参数皆需类型转换，请为此采用no-member函数
+
+
+
+
